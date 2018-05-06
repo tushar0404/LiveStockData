@@ -40,7 +40,12 @@
                         <tr ng-repeat="(data, value) in livedata" class="table-light h4">
                             <td>{{$index+1}}</td>
                             <td>{{data | uppercase}}</td>
-                            <td class="{{value.class}}" >{{value.price | currency}}</td>
+                            <td class="{{value.class}}" >
+                                {{value.price | currency}}
+                                <i class="material-icons" ng-if= "value.class == 'btn-danger'">arrow_downward</i>
+                                <i class="material-icons" ng-if= "value.class == 'btn-success'">arrow_upward</i>
+                                <span ng-if="value.class == 'btn-danger' || value.class == 'btn-success'">[ {{value.price - value.previousPrice | number: 2}} ]</span>
+                            </td>
                             <td>{{value.lastUpdates | uppercase}}</td>
                         </tr>
                     </tbody>

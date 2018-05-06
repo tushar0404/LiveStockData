@@ -64,18 +64,20 @@ function mainFunction($scope){
     		if(typeof dataPrevious[data[i][0]] == 'undefined'){
     			
     			// If this is first ticket in our record
-    			var newData = {price:data[i][1], class:"",lastUpdates:"A Few Seconds Ago",updatedOn: currDateTime};
+    			var newData = {price:data[i][1], class:"",lastUpdates:"A Few Seconds Ago",updatedOn: currDateTime,previousPrice:0.00};
     			dataPrevious[data[i][0]] =  newData;
     		
     		}else if(dataPrevious[data[i][0]].price < data[i][1]){
     		
     			// Price is greater then previous  then change color to green
+    			dataPrevious[data[i][0]].previousPrice = dataPrevious[data[i][0]].price;
     			dataPrevious[data[i][0]].price = data[i][1];
     			dataPrevious[data[i][0]].class = 'btn-success';
     		
     		}else{
     		
     			// Price is less then previous  then change color to red
+    			dataPrevious[data[i][0]].previousPrice = dataPrevious[data[i][0]].price;
     			dataPrevious[data[i][0]].price = data[i][1];
     			dataPrevious[data[i][0]].class = 'btn-danger';
     		}
