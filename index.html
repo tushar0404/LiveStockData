@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html ng-app="MyApp">
+    <head>
+        <title>Live Ticket Price Tracking</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+    </head>
+    <body>
+        <div class="container">
+            <div  ng-controller="IndexController" class="table-responsive">
+                <marquee><h3><strong>{{status}}</strong></h3></marquee>
+                <h3>Live Stock Data</h3>
+                <div class="row">
+                    
+                    <div class="col-sm-6 col-md-2 col-ld-2 btn btn-danger">
+                        Price Down 
+                        <i class="material-icons">trending_down</i>
+                    </div>
+                    
+
+                    <div class="col-sm-6 col-md-2 col-ld-2 btn btn-success">
+                        Price Up
+                        <i class="material-icons">trending_up</i> 
+                    </div>
+                    
+                </div>
+
+                <br/>
+               
+                <table class="table table-bordered">
+                    <thead>
+                        <tr class="table-light h4">
+                          <th scope="col">#<i class="material-icons">sort</i></th>
+                          <th scope="col">Ticker <i class="material-icons">view_list</i></th>
+                          <th scope="col">Price <i class="material-icons">attach_money</i></th>
+                          <th scope="col">Last Updated <i class="material-icons">access_time</i></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="(data, value) in livedata" class="table-light h4">
+                            <td>{{$index+1}}</td>
+                            <td>{{data | uppercase}}</td>
+                            <td class="{{value.class}}" >{{value.price | currency}}</td>
+                            <td>{{value.lastUpdates | uppercase}}</td>
+                        </tr>
+                    </tbody>
+                  
+                </table>
+            </div>
+        </div>    
+       
+        <!-- <div ng-controller="AboutController">Brought to you by {{name}}.</div> -->
+        <!--  Angular JS Scripts -->
+        <script src="node_modules/angular/angular.js"></script>
+        <script src="node_modules/angular-route/angular-route.js"></script>
+        <script src="node_modules/angular-websocket/dist/angular-websocket.js"></script>
+        <script src="node_modules/moment/moment.js"></script>
+        <script src="node_modules/jquery/dist/jquery.min.js"></script>
+        <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        
+
+        <!-- AngularJS Application Specific Scripts -->
+        <script src="app/app.js"></script>
+        <script src="app/controllers/IndexController.js"></script>
+    </body>
+
+</html>
+
